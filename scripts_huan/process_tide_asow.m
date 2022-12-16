@@ -1,4 +1,4 @@
-%%
+%% load paths
 addpath(genpath('\\USDEN1-STOR.DHI.DK\Projects\41806529\_metocean_scripts\potlab_v2\src'));
 addpath(genpath('\\USDEN1-STOR.DHI.DK\Projects\41806529\_metocean_scripts\potlab_v2\res'));
 addpath('C:\Users\jngz\OneDrive - DHI\2022\41806529-AtlanticShores\Scripts\FileIO');
