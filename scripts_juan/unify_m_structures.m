@@ -1,7 +1,13 @@
+%%
+addpath(genpath('\\USDEN1-STOR.DHI.DK\Projects\41806529\_metocean_scripts\potlab_v2\src'));
+addpath(genpath('\\USDEN1-STOR.DHI.DK\Projects\41806529\_metocean_scripts\potlab_v2\res'));
+
+%%
 fdir_winds = 'C:\DHI\Projects\AtlanticShores\Data\CFSRWind\';
 fdir_wl = 'C:\DHI\Projects\AtlanticShores\Data\TidalAnalysis\wl\MLLW\';
 fdir_uv = 'C:\DHI\Projects\AtlanticShores\Data\TidalAnalysis\uv\';
 fdir_waves = 'C:\DHI\Projects\AtlanticShores\Data\Points to be delivered SW_HD';
+out_dir = '';
 loc_no = 7;
 
 % wind names
@@ -105,6 +111,13 @@ sw_files = {'P1_US_EastCoast_SW_-73.945_39.651_24.6_3051.4_1979-01-01_2021-12-31
     'P6_US_EastCoast_SW_-74.111_39.357_23.2_3174_1979-01-01_2021-12-31_';
     'P7_US_EastCoast_SW_-74.212_39.284_21.9_3302_1979-01-01_2021-12-31_'};
 
+xyh = [-73.945 39.651 24.6;
+    -73.95 39.307 29.9;
+    -74.044 39.201 24.4;
+    -74.116 39.161 28.5;
+    -74.118 39.252 26.8;
+    -74.111 39.357 23.2;
+    -74.212 39.284 21.9];
 
 %% process water level and currents first
 
@@ -191,3 +204,5 @@ end
 %% process waves
 
 for i=1:length(loc_no)
+
+end
