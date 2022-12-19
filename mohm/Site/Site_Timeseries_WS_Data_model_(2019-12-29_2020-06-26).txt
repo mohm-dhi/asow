@@ -1,0 +1,7 @@
+Site
+ (74.212000\circW; 39.284000\circN; d=10.0mMSL) 
+Statistics  (2019-12-29–2020-06-26; \Deltat=10min)
+
+	
+	N	MEAN	MIN	MAX	STD	
+WS,Data model	25758.00	162.80	-	360.00	 88.40	

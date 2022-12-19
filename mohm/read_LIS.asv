@@ -1,0 +1,10 @@
+file = "Z:\01_Client_supplied_data\3 Data\Data\Loc6a\144041-QC_datalistings_aqd_SV1_03\144041-QC_datalistings_aqd_SV1_03.LIS";
+
+data = readtable(file, 'FileType','text', 'NumHeaderLines', 36);
+
+data.Var1 = datetime(string(data{:,1}), 'format', 'yyyy-MM-dd HH:mm:ss');
+
+
+writetable(data, 'file.csv')
+
+head(data)
