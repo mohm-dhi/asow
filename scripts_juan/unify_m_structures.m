@@ -6,8 +6,8 @@ addpath(genpath('\\USDEN1-STOR.DHI.DK\Projects\41806529\_metocean_scripts\potlab
 fdir_winds = 'C:\DHI\Projects\AtlanticShores\Data\CFSRWind\';
 fdir_wl = 'C:\DHI\Projects\AtlanticShores\Data\TidalAnalysis\wl\MLLW\';
 fdir_uv = 'C:\DHI\Projects\AtlanticShores\Data\TidalAnalysis\uv\';
-fdir_waves = 'C:\DHI\Projects\AtlanticShores\Data\Points to be delivered SW_HD';
-out_dir = '';
+fdir_waves = 'C:\DHI\Projects\AtlanticShores\Data\Points to be delivered SW_HD\';
+out_dir = 'C:\DHI\Projects\AtlanticShores\Data\Structs\';
 loc_no = 7;
 
 % wind names
@@ -62,46 +62,46 @@ uvz_lbl = {'CurDir_Surf_Total',...
 uvz_dir = {'level_1','level_5','level_3','level_4','level_2'};
 uvz_data = {'D_total','U_total','D_tide','U_tide','D_res','U_res'};
 
-% wave field names (these structures are processed in this script) 
+% wave field names (these structures are processed in this script)
 wave_lbl = {'Hm0_Total'
-'Tp_Total'
-'T01_Total'
-'T02_Total'
-'PWD_Total'
-'MWD_Total'
-'DSD_Total'
-'Hm0_Sea'
-'Tp_Sea'
-'T01_Sea'
-'T02_Sea'
-'PWD_Sea'
-'MWD_Sea'
-'Hm0_Swell'
-'Tp_Swell'
-'T01_Swell'
-'T02_Swell'
-'PWD_Swell'
-'MWD_Swell'};
+    'Tp_Total'
+    'T01_Total'
+    'T02_Total'
+    'PWD_Total'
+    'MWD_Total'
+    'DSD_Total'
+    'Hm0_Sea'
+    'Tp_Sea'
+    'T01_Sea'
+    'T02_Sea'
+    'PWD_Sea'
+    'MWD_Sea'
+    'Hm0_Swell'
+    'Tp_Swell'
+    'T01_Swell'
+    'T02_Swell'
+    'PWD_Swell'
+    'MWD_Swell'};
 
 wave_m_items = {'Hm0_Total'
-'Tp_Total'
-'T01_Total'
-'T02_Total'
-'PWD_Total'
-'MWD_Total'
-'DSD_Total'
-'Hm0_Sea'
-'Tp_Sea'
-'T01_Sea'
-'T02_Sea'
-'PWD_Sea'
-'MWD_Sea'
-'Hm0_Swell'
-'Tp_Swell'
-'T01_Swell'
-'T02_Swell'
-'PWD_Swell'
-'MWD_Swell'};
+    'Tp_Total'
+    'T01_Total'
+    'T02_Total'
+    'PWD_Total'
+    'MWD_Total'
+    'DSD_Total'
+    'Hm0_Sea'
+    'Tp_Sea'
+    'T01_Sea'
+    'T02_Sea'
+    'PWD_Sea'
+    'MWD_Sea'
+    'Hm0_Swell'
+    'Tp_Swell'
+    'T01_Swell'
+    'T02_Swell'
+    'PWD_Swell'
+    'MWD_Swell'};
 
 sw_files = {'P1_US_EastCoast_SW_-73.945_39.651_24.6_3051.4_1979-01-01_2021-12-31_';
     'P2_US_EastCoast_SW_-73.95_39.307_29.9_3458.2_1979-01-01_2021-12-31_';
@@ -118,6 +118,8 @@ xyh = [-73.945 39.651 24.6;
     -74.118 39.252 26.8;
     -74.111 39.357 23.2;
     -74.212 39.284 21.9];
+
+ttt = [datenum([1979 01 01 01 00 00]) datenum([2021 12 31 23 00 00]) 60];
 
 %% process water level and currents first
 
@@ -203,6 +205,23 @@ end
 
 %% process waves
 
-for i=1:length(loc_no)
+for i=1:loc_no
+
+    name = ['ASOW' num2str(i)];
+    xyz = xyh(i,:);
+    xyz_strs = {['(' num2str(xyh(i,1)*-1) 'W;' num2str(xyh(i,2)*-1) 'N;' num2str(xyh(i,3)*-1) 'mMSL)']};
+    xyz_str = xyz_strs{1};
+
+    [sw_arr] = read_mood_sw_csv(fdir_waves,[sw_files{i} '.csv'],16);
+
+    % create structure for each wave variable
+    for sw=2:size(sw_arr,2)
+
+        asow_params(i).(wave_lbl{sw-1}) = m_structure(name,xyz,ttt,'Data',[sw_arr(:,1) sw_arr(:,sw)],wave_lbl{sw-1},1,0:0.1:25);
+
+    end
+
+    asow_params_out = asow_params(i);
+    save([out_dir name '_all_structs.mat'], 'asow_params_out');
 
 end
