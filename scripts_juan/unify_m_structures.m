@@ -119,6 +119,7 @@ xyh = [-73.945 39.651 24.6;
     -74.111 39.357 23.2;
     -74.212 39.284 21.9];
 
+% make a different ttt for each
 ttt = [datenum([1979 01 01 01 00 00]) datenum([2021 12 31 23 00 00]) 60];
 
 %% process water level and currents first

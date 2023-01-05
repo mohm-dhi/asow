@@ -1,0 +1,6 @@
+ASOW6
+Quality indices of H_{m0}  (2019-12-01–2020-07-01; \Deltat=1h) 
+
+	Quality index
+Timeseries	N	MEAN	BIAS	AME	RMSE	SI	EV	CC	PR	
+Obs	4,305 (179.4days)	1.94m (138.6%)	+0.54m (38.6%)	0.57m (40.4%)	0.71m (51.1%)	0.33 (Unbiased)	0.57	0.90	1.10 (N_{p} = 1)	

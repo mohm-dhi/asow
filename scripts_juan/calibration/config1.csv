@@ -1,0 +1,2 @@
+disable,stations,lon,lat,depth,model_path,model_column,obs_path,obs_column
+,ASOW6,-73.939,39.272,-31.2,C:\DHI\Projects\AtlanticShores\Data\Calibration\MOOD\Location 6_US_EastCoast_SW_-73.939_39.272_31.2_2862.1_1979-01-01_2021-12-31_.dfs0,1,C:\DHI\Projects\AtlanticShores\Data\Calibration\Client\Loc6a\144041-QC_datalistings_SV1_03\144041-QC_datalistings_waves_SV1_03.csv,2

@@ -1,10 +1,10 @@
 %% load paths
-addpath(genpath('\\USDEN1-STOR.DHI.DK\Projects\41806529\_metocean_scripts\potlab_v2\src'));
-addpath(genpath('\\USDEN1-STOR.DHI.DK\Projects\41806529\_metocean_scripts\potlab_v2\res'));
-addpath('C:\Users\jngz\OneDrive - DHI\2022\41806529-AtlanticShores\Scripts\FileIO');
+addpath(genpath('C:\Users\jngz\MATLAB\Projects\potlab\src'));
+addpath(genpath('C:\Users\jngz\MATLAB\Projects\potlab\res'));
+% addpath('C:\Users\jngz\OneDrive - DHI\2022\41806529-AtlanticShores\Scripts\FileIO');
 
 %%
-fdir = 'C:\Users\jngz\OneDrive - DHI\2022\41806529-AtlanticShores\Data\Points to be delivered SW_HD\';
+fdir = 'C:\DHI\Projects\AtlanticShores\Data\TimeSeries\Points to be delivered SW_HD\';
 fname = {'P1_US_EastCoast_HD_-73.945_39.651_24.6_3051.4_1979-01-01_2021-12-31_.csv';
     'P2_US_EastCoast_HD_-73.95_39.307_29.9_3458.2_1979-01-01_2021-12-31_.csv';
     'P3_US_EastCoast_HD_-74.044_39.201_24.4_2725.6_1979-01-01_2021-12-31_.csv';
@@ -22,9 +22,9 @@ xyh = [-73.945 39.651 24.6;
 headerlines = 16;
 tmin            = datenum([1979 01 01 01 00 00]);  % Full HD period start
 tmax            = datenum([2021 12 31 23 00 00]);  % Full HD period end
-tttt_CURR       = [tmin tmax  60  60];
-bins_WL         = [-1.80:0.25:1.80];
-lgnd_HDOS_mike2d  = 'HD_{MIKE2D}';
+tttt_CURR       = [tmin tmax  30];
+bins_WL         = [-2:0.25:2];
+lgnd_hd_us  = 'HD_{US-EC}';
 
 %% process water levels
 
@@ -38,7 +38,7 @@ for i=1:length(fname)
     [wlevel_arr,curr2d_arr] = read_mood_hd_csv(fdir,fname{i},headerlines);
 
     % WL from m_tide
-    asow_wl = m_structure(name,xyh(i,:),tttt_CURR,lgnd_HDOS_mike2d,wlevel_arr,['WL'],1,bins_WL);
+    asow_wl = m_structure(name,xyh(i,:),tttt_CURR,lgnd_hd_us,wlevel_arr,['WL'],1,bins_WL);
 
     % run u-tide
     m_tide(asow_wl)
@@ -57,8 +57,8 @@ for i=1:length(fname)
 
     [wlevel_arr,curr2d_arr] = read_mood_hd_csv(fdir,fname{i},headerlines);
 
-    asow_u    = m_structure(name,xyh(i,:),tttt_CURR,lgnd_HDOS_mike2d,curr2d_arr,['uvel'],1,-1:0.01:1);
-    asow_v    = m_structure(name,xyh(i,:),tttt_CURR,lgnd_HDOS_mike2d,curr2d_arr,['vvel'],2,-1:0.01:1);
+    asow_u    = m_structure(name,xyh(i,:),tttt_CURR,lgnd_hd_us,curr2d_arr,['uvel'],1,-1:0.01:1);
+    asow_v    = m_structure(name,xyh(i,:),tttt_CURR,lgnd_hd_us,curr2d_arr,['vvel'],2,-1:0.01:1);
     [asow_u.data, asow_v.data] = spddir2uv(asow_u.data,asow_v.data); % uv2spddir
     
     asow_u.unit='m/s';

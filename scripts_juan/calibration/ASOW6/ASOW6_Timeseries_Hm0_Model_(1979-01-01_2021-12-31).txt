@@ -1,0 +1,7 @@
+ASOW6
+ (73.939000\circW; 39.272000\circN; d=-31.2mMSL) 
+Statistics  (1979-01-01–2021-12-31; \Deltat=1h)
+
+	
+	N	MEAN	MIN	MAX	STD	
+Hm0,Model	376920.00	  1.27	  0.20	  9.98	  0.72	

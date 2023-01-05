@@ -1,0 +1,11 @@
+disable,stations,lon,lat,depth,model_path,model_column,obs_path,obs_column
+,ASOW6,-73.939,39.272,-31.2,C:\DHI\Projects\AtlanticShores\Data\Calibration\MOOD\Location 6_US_EastCoast_SW_-73.939_39.272_31.2_2862.1_1979-01-01_2021-12-31_.dfs0,1,C:\DHI\Projects\AtlanticShores\Data\Calibration\Client\Loc6a\144041-QC_datalistings_SV1_03\144041-QC_datalistings_waves_SV1_03.csv,2
+Yes,E06,-73.43,39.55,-34,C:\path\to\the\model_dfs0\or\csv\file.dfs0,1 2 6,C:\path\to\the\observation_dfs0\or\csv\file.dfs0,1 2 6
+Yes,91131,-79.54,43.24,0,C:\path\to\the\model_dfs0\or\csv\file.dfs0,1 5 9,C:\path\to\the\observation_dfs0\or\csv\file.dfs0,1 2 3
+Yes,91132,-79.58,43.324,0,C:\path\to\the\model_dfs0\or\csv\file.dfs0,12 128 360,C:\path\to\the\observation_dfs0\or\csv\file.dfs0,1 2 3
+Yes,91133,-79.6,43.26,0,C:\path\to\the\model_dfs0\or\csv\file.dfs0,13 129 361,C:\path\to\the\observation_dfs0\or\csv\file.dfs0,1 2 3
+Yes,91134,-79.64,43.26,0,C:\path\to\the\model_dfs0\or\csv\file.dfs0,14 130 362,C:\path\to\the\observation_dfs0\or\csv\file.dfs0,1 2 3
+Yes,91135,-79.68,43.26,0,C:\path\to\the\model_dfs0\or\csv\file.dfs0,15 131 363,C:\path\to\the\observation_dfs0\or\csv\file.dfs0,1 2 3
+Yes,91136,-79.72,43.28,0,C:\path\to\the\model_dfs0\or\csv\file.dfs0,16 132 364,C:\path\to\the\observation_dfs0\or\csv\file.dfs0,1 2 3
+Yes,91137,-79.76,43.28,0,C:\path\to\the\model_dfs0\or\csv\file.dfs0,2 6 10,C:\path\to\the\observation_dfs0\or\csv\file.dfs0,1 2 3
+Yes,91138,-79.76,43.3,0,C:\path\to\the\model_dfs0\or\csv\file.dfs0,3 7 11,C:\path\to\the\observation_dfs0\or\csv\file.dfs0,1 2 3
