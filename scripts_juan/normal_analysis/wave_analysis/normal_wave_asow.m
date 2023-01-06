@@ -8,64 +8,21 @@ addpath('C:\DHI\Projects\AtlanticShores\Scripts\asow\scripts_juan\normal_analysi
 %%
 
 fdir = 'C:\DHI\Projects\AtlanticShores\Data\TimeSeries\Structs\';
-odir_t = 'C:\DHI\Projects\AtlanticShores\Analysis\Normal\Tidal\TidalLevels\';
-odir_y = 'C:\DHI\Projects\AtlanticShores\Analysis\Normal\Tidal\AnnualStats\';
+odir_m = 'C:\DHI\Projects\AtlanticShores\Analysis\Normal\Waves\MonthlyStats\';
+odir_y = 'C:\DHI\Projects\AtlanticShores\Analysis\Normal\Waves\AnnualStats\';
 no_locs = 7;
 
 mllw = [-0.55,-0.58,-0.60,-0.61,-0.61,-0.60,-0.63]; %vdatum
 
-%% Tidal Levels (wrt MSL, ie remove MLLW correction)
+%% Wave yeights, yearly
 
-cd(odir_t);
-
-for i=1:no_locs
-
-    % load structure
-    fname = [fdir 'ASOW' num2str(i) '_all_structs.mat'];
-    load(fname);
-
-    % calculate annual stats
-    WL_Tide = asow_params_out.WL_Tide;
-    WL_Tide.data = WL_Tide.data-abs(mllw(i));
-    tidal_levels = m_tidal_levels(WL_Tide);
-
-    % min and max 
-    tidal_levels.names_c = {'min','max'};
-    tidal_levels.values_c = [min(WL_Tide.data) max(WL_Tide.data)];
-
-    % save to file
-    save(['asow' num2str(i) '_tidal_levels_MSL.mat'], 'tidal_levels');
-
-end
-
-%% Tidal Levels (wrt MLLW)
-
-cd(odir_t);
+params = {'Hm0_Total','Hm0_Sea','Hm0_Swell'};
+leg = {'Hm0_{Total}','Hm0_{Sea}','Hm0_{Swell}'};
+bins = {0:3:12, 0:2:10, 0:2:10};
 
 for i=1:no_locs
 
-    % load structure
-    fname = [fdir 'ASOW' num2str(i) '_all_structs.mat'];
-    load(fname);
-
-    % calculate tidal parameters
-    WL_Tide = asow_params_out.WL_Tide;
-    tidal_levels = m_tidal_levels(WL_Tide);
-
-    % min and max 
-    tidal_levels.names_c = {'min','max'};
-    tidal_levels.values_c = [min(WL_Tide.data) max(WL_Tide.data)];
-
-    % save to file
-    save(['asow' num2str(i) '_tidal_levels_MLLW.mat'], 'tidal_levels');
-
-end
-
-%% Calculate yearly statistics on Total WL (wrt MSL) 
-
-for i=1:no_locs
-
-    cd([odir_y 'MSL']);
+    cd(odir_y);
     mkdir(['ASOW' num2str(i)]);
     cd(['ASOW' num2str(i)])
 
@@ -73,28 +30,35 @@ for i=1:no_locs
     fname = [fdir 'ASOW' num2str(i) '_all_structs.mat'];
     load(fname);
 
-    % calculate tidal parameters
-    WL_Total = asow_params_out.WL_Total;
-    WL_Total.data = WL_Total.data-abs(mllw(i));
+    for p = 1:length(params)
 
-    % modify struct items for plotting
-    WL_Total.bins = -2:0.5:3;
-    WL_Total.unit = 'mMSL';
-    WL_Total.legend = 'WLTotal MSL';
-    WL_Total.ttt_str_long = ' (1979-01-15–2021-12-31; \Deltat=60min) ';
-    WL_Total.ttt = [datenum('1979-01-15') datenum('2021-12-31') 60];
-    WL_Total.xyz_str =  ['('  num2str(-1*WL_Total.xyz(1)) 'W;' num2str(WL_Total.xyz(2)) 'N;'  num2str(-1*WL_Total.xyz(3)) WL_Total.unit ')'];
+        % calculate tidal parameters
+        wave_struct = asow_params_out.(params{p});
 
-    % do statistics
-    m_statistics(WL_Total,'yearly');
+        % modify struct items for plotting
+        wave_struct.bins = bins{p};
+        %     wave_struct.unit = 'mMLLW';
+        wave_struct.legend = leg{p};
+        wave_struct.ttt_str_long = ' (1979-01-15–2021-12-31; \Deltat=60min) ';
+        wave_struct.ttt = [datenum('1979-01-15') datenum('2021-12-31') 60];
+        %     wave_struct.xyz_str =  ['('  num2str(-1*wave_struct.xyz(1)) 'W;' num2str(wave_struct.xyz(2)) 'N;'  num2str(-1*(wave_struct.xyz(3)+abs(mllw(i)))) wave_struct.unit ')'];
+
+        % do statistics
+        m_statistics(wave_struct,'yearly');
+
+    end
 
 end
 
-%% Calculate yearly statistics on Total WL (wrt MLLW) 
+%% Wave yeights, monthly
+
+params = {'Hm0_Total','Hm0_Sea','Hm0_Swell'};
+bins = {0:3:12, 0:2:10, 0:2:10};
+leg = {'Hm0_{Total}','Hm0_{Sea}','Hm0_{Swell}'};
 
 for i=1:no_locs
 
-    cd([odir_y 'MLLW']);
+    cd(odir_m);
     mkdir(['ASOW' num2str(i)]);
     cd(['ASOW' num2str(i)])
 
@@ -102,18 +66,22 @@ for i=1:no_locs
     fname = [fdir 'ASOW' num2str(i) '_all_structs.mat'];
     load(fname);
 
-    % calculate tidal parameters
-    WL_Total = asow_params_out.WL_Total;
+    for p = 1:length(params)
 
-    % modify struct items for plotting
-    WL_Total.bins = -1.2:0.5:4;
-    WL_Total.unit = 'mMLLW';
-    WL_Total.legend = 'WLTotal MLLW';
-    WL_Total.ttt_str_long = ' (1979-01-15–2021-12-31; \Deltat=60min) ';
-    WL_Total.ttt = [datenum('1979-01-15') datenum('2021-12-31') 60];
-    WL_Total.xyz_str =  ['('  num2str(-1*WL_Total.xyz(1)) 'W;' num2str(WL_Total.xyz(2)) 'N;'  num2str(-1*(WL_Total.xyz(3)+abs(mllw(i)))) WL_Total.unit ')'];
+        % calculate tidal parameters
+        wave_struct = asow_params_out.(params{p});
 
-    % do statistics
-    m_statistics(WL_Total,'yearly');
+        % modify struct items for plotting
+        wave_struct.bins = bins{p};
+        %     wave_struct.unit = 'mMLLW';
+        wave_struct.legend = leg{p};
+        wave_struct.ttt_str_long = ' (1979-01-15–2021-12-31; \Deltat=60min) ';
+        wave_struct.ttt = [datenum('1979-01-15') datenum('2021-12-31') 60];
+        %     wave_struct.xyz_str =  ['('  num2str(-1*wave_struct.xyz(1)) 'W;' num2str(wave_struct.xyz(2)) 'N;'  num2str(-1*(wave_struct.xyz(3)+abs(mllw(i)))) wave_struct.unit ')'];
+
+        % do statistics
+        m_statistics(wave_struct,'monthly');
+
+    end
 
 end
