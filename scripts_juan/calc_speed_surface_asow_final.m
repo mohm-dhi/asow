@@ -107,6 +107,8 @@ for i=1:no_locs
         % zb = depth at surface
         zb = depth + z(zi);
 
+        disp(["zb" num2str(zb) "z" num2str(z(zi))])
+
         if zb>0
 
             % calculate ubar_tide at zb
@@ -125,7 +127,7 @@ for i=1:no_locs
 
             % calculate u residual (ubar_atm_zb + u_wind_zb)
             [u1,v1] = spddir2uv(ubar_atm_zb,cd_atm);
-            [u2,v2] = spddir2uv(u_wind_bar,u_wind_dir);
+            [u2,v2] = spddir2uv(u_wind_z(zi,:)',u_wind_dir);
 
             u_res_z_uv = [u1+u2,v1+v2];
             [u_res_z_sp,u_res_z_dir] = uv2spddir(u_res_z_uv(:,1),u_res_z_uv(:,2),'to');
@@ -144,11 +146,11 @@ for i=1:no_locs
             save([sdirn '\D_tide.mat'],'D_tide');
 
             % make m_structure for surface current
-            U_surf = m_structure(name, xyz, ttt,'CS_{Surface}',[datenum(cs_tide.time) u_wind_z(zi,:)' u_wind_dir], 'Current_speed_surface', 1, bins_CS);
-            D_surf = m_structure(name, xyz, ttt,'CD_{Surface}',[datenum(cs_tide.time) u_wind_z(zi,:)' u_wind_dir], 'Current_direction_surface', 2, bins_D);
+%             U_surf = m_structure(name, xyz, ttt,'CS_{Surface}',[datenum(cs_tide.time) u_wind_z(zi,:)' u_wind_dir], 'Current_speed_surface', 1, bins_CS);
+%             D_surf = m_structure(name, xyz, ttt,'CD_{Surface}',[datenum(cs_tide.time) u_wind_z(zi,:)' u_wind_dir], 'Current_direction_surface', 2, bins_D);
 
-            save([sdirn '\U_surf.mat'],'U_surf');
-            save([sdirn '\D_surf.mat'],'D_surf');
+%             save([sdirn '\U_surf.mat'],'U_surf');
+%             save([sdirn '\D_surf.mat'],'D_surf');
 
             % make structures for residual current
             U_res = m_structure(name, xyz, ttt, ['CS_{Residual} z=' num2str(z(zi))], [datenum(cs_tide.time) u_res_z_sp], 'Current_speed_residual', 1, bins_CS);
