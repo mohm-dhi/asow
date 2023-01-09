@@ -34,8 +34,10 @@ loc_no = 7;
 
 %% process files
 
+% directory with output csv files
 fdir = 'C:\DHI\Projects\AtlanticShores\Data\TimeSeries\Deliverable\CSV1\';
 
+% csv file names
 fname = {'ASOW_P1-DHI-MET-2022 Metocean data_Loc001_x.0';
     'ASOW_P2-DHI-MET-2022 Metocean data_Loc002_x.0';
     'ASOW_P3-DHI-MET-2022 Metocean data_Loc003_x.0';
@@ -43,8 +45,6 @@ fname = {'ASOW_P1-DHI-MET-2022 Metocean data_Loc001_x.0';
     'ASOW_P5-DHI-MET-2022 Metocean data_Loc005_x.0';
     'ASOW_P6-DHI-MET-2022 Metocean data_Loc006_x.0';
     'ASOW_P7-DHI-MET-2022 Metocean data_Loc007_x.0'};
-
-
 
 % for all locations
 for i = 1:loc_no

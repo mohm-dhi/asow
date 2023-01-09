@@ -145,13 +145,6 @@ for i=1:no_locs
             save([sdirn '\U_tide.mat'],'U_tide');
             save([sdirn '\D_tide.mat'],'D_tide');
 
-            % make m_structure for surface current
-%             U_surf = m_structure(name, xyz, ttt,'CS_{Surface}',[datenum(cs_tide.time) u_wind_z(zi,:)' u_wind_dir], 'Current_speed_surface', 1, bins_CS);
-%             D_surf = m_structure(name, xyz, ttt,'CD_{Surface}',[datenum(cs_tide.time) u_wind_z(zi,:)' u_wind_dir], 'Current_direction_surface', 2, bins_D);
-
-%             save([sdirn '\U_surf.mat'],'U_surf');
-%             save([sdirn '\D_surf.mat'],'D_surf');
-
             % make structures for residual current
             U_res = m_structure(name, xyz, ttt, ['CS_{Residual} z=' num2str(z(zi))], [datenum(cs_tide.time) u_res_z_sp], 'Current_speed_residual', 1, bins_CS);
             D_res = m_structure(name, xyz, ttt, ['CD_{Residual} z=' num2str(z(zi))], [datenum(cs_tide.time) u_res_z_dir], 'Current_direction_residual', 1, bins_D);
