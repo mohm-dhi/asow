@@ -1,7 +1,0 @@
-ASOW6
-Statistics of Hm0  (2019-12-01–2020-07-01; \Deltat=1h)
-
-	Statistics
-Timeseries	N	MEAN	MIN	MAX	STD	
-Model	4305.00	  1.40	  0.27	  6.59	  0.71	
-Obs	4305.00	  1.94	  0.41	  7.24	  1.00	
