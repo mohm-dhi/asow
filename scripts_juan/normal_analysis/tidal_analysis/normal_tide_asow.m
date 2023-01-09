@@ -1,6 +1,6 @@
 %%
-addpath(genpath('C:\Users\jngz\MATLAB\Projects\potlab\src'));
 addpath(genpath('C:\Users\jngz\MATLAB\Projects\potlab\res'));
+addpath(genpath('C:\Users\jngz\MATLAB\Projects\potlab\src'));
 addpath('C:\DHI\Projects\AtlanticShores\Scripts\asow\scripts_juan\normal_analysis\tidal_analysis');
 addpath('C:\DHI\Projects\AtlanticShores\Scripts\asow\scripts_juan\normal_analysis');
 
@@ -81,7 +81,7 @@ for i=1:no_locs
     WL_Total.bins = -2:0.5:3;
     WL_Total.unit = 'mMSL';
     WL_Total.legend = 'WLTotal MSL';
-    WL_Total.ttt_str_long = ' (1979-01-15–2021-12-31; \Deltat=60min) ';
+    WL_Total.ttt_str_long = ' (1979-01-15–2021-12-31; \Deltat=1h) ';
     WL_Total.ttt = [datenum('1979-01-15') datenum('2021-12-31') 60];
     WL_Total.xyz_str =  ['('  num2str(-1*WL_Total.xyz(1)) 'W;' num2str(WL_Total.xyz(2)) 'N;'  num2str(-1*WL_Total.xyz(3)) WL_Total.unit ')'];
 
@@ -109,7 +109,7 @@ for i=1:no_locs
     WL_Total.bins = -1.2:0.5:4;
     WL_Total.unit = 'mMLLW';
     WL_Total.legend = 'WLTotal MLLW';
-    WL_Total.ttt_str_long = ' (1979-01-15–2021-12-31; \Deltat=60min) ';
+    WL_Total.ttt_str_long = ' (1979-01-15–2021-12-31; \Deltat=1h) ';
     WL_Total.ttt = [datenum('1979-01-15') datenum('2021-12-31') 60];
     WL_Total.xyz_str =  ['('  num2str(-1*WL_Total.xyz(1)) 'W;' num2str(WL_Total.xyz(2)) 'N;'  num2str(-1*(WL_Total.xyz(3)+abs(mllw(i)))) WL_Total.unit ')'];
 

@@ -35,7 +35,7 @@ loc_no = 7;
 %% process files
 
 % directory with output csv files
-fdir = 'C:\DHI\Projects\AtlanticShores\Data\TimeSeries\Deliverable\CSV1\';
+fdir = 'C:\DHI\Projects\AtlanticShores\Data\TimeSeries\Deliverable\CSVFinal\';
 
 % csv file names
 fname = {'ASOW_P1-DHI-MET-2022 Metocean data_Loc001_x.0';
@@ -49,6 +49,7 @@ fname = {'ASOW_P1-DHI-MET-2022 Metocean data_Loc001_x.0';
 % for all locations
 for i = 1:loc_no
 
+    disp(['Processing file' fname{i}]);
     asow_params = struct();
     name = ['ASOW' num2str(i)];
     xyz = xyh(i,:);
@@ -68,6 +69,6 @@ for i = 1:loc_no
     end
 
     %asow_params_out = asow_params(i);
-    save(['C:\DHI\Projects\AtlanticShores\Data\TimeSeries\Deliverable\CSV1\structs\' name '_all_structs.mat'], 'asow_params');
+    save(['C:\DHI\Projects\AtlanticShores\Data\TimeSeries\Deliverable\CSVFinal\structs\' name '_all_structs.mat'], 'asow_params');
 
 end
