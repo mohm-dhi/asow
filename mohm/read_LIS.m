@@ -1,4 +1,4 @@
-file = "\\USDEN1-STOR.DHI.DK\Projects\41806529\01_Client_supplied_data\3 Data\Data\Loc6a\144041-QC_datalistings_SV1_03\144041-QC_datalistings_spectra_SV1_03.LIS"
+file = "Z:\01_Client_supplied_data\3 Data\Data\Loc6a\144041-QC_datalistings_SV1_03\144041-QC_datalistings_mets1_SV1_03.LIS"
 
 out_file = strrep(file,'.LIS', '.csv')
 data = readtable(file, 'FileType','text', 'Range', 'B23');
