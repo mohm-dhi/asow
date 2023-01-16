@@ -7,7 +7,7 @@ addpath(genpath('C:\DHI\Projects\AtlanticShores\Scripts\asow\scripts_juan\normal
 %%
 
 fdir = 'C:\DHI\Projects\AtlanticShores\Data\TimeSeries\Deliverable\CSVFinal\structs\';
-odir_m = 'C:\DHI\Projects\AtlanticShores\Analysis\Normal\Waves\DirectionalStats\';
+odir_ro = 'C:\DHI\Projects\AtlanticShores\Analysis\Normal\Waves\RoseOmni\';
 no_locs = 7;
 
 
@@ -16,11 +16,11 @@ no_locs = 7;
 params = {'Hm0_Total','Hm0_Sea','Hm0_Swell'};
 direc = {'MWD_Total','MWD_Sea','MWD_Swell'};
 bins = {0:3:12, 0:2:10, 0:2:10};
-leg = {'Hm0_{Total}','Hm0_{Sea}','Hm0_{Swell}'};
+leg = {'H_{m0,Total}','H_{m0,Sea}','H_{m0,Swell}'};
 
 for i=1:no_locs
 
-    cd(odir_m);
+    cd(odir_ro);
 
     % load structure
     fname = [fdir 'ASOW' num2str(i) '_all_structs.mat'];
@@ -63,7 +63,7 @@ bins = {0:5:30, 0:5:20, 0:5:30};
 
 for i=1:no_locs
 
-    cd(odir_m);
+    cd(odir_ro);
 
     % load structure
     fname = [fdir 'ASOW' num2str(i) '_all_structs.mat'];
@@ -105,7 +105,7 @@ bins = {0:5:25, 0:5:20, 0:5:25};
 
 for i=1:no_locs
 
-    cd(odir_m);
+    cd(odir_ro);
 
     % load structure
     fname = [fdir 'ASOW' num2str(i) '_all_structs.mat'];
@@ -147,7 +147,7 @@ bins = {0:5:20, 0:5:20, 0:5:20};
 
 for i=1:no_locs
 
-    cd(odir_m);
+    cd(odir_ro);
 
     % load structure
     fname = [fdir 'ASOW' num2str(i) '_all_structs.mat'];
