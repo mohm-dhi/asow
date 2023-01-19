@@ -7,9 +7,8 @@ addpath(genpath('C:\DHI\Projects\AtlanticShores\Scripts\asow\scripts_juan\normal
 %%
 
 fdir = 'C:\DHI\Projects\AtlanticShores\Data\TimeSeries\Deliverable\CSVFinal\structs\';
-odir_ro = 'C:\DHI\Projects\AtlanticShores\Analysis\Normal\Waves\RoseOmni\';
+odir_d = 'C:\DHI\Projects\AtlanticShores\Analysis\Normal\Waves\Results\DirectionalStats\';
 no_locs = 7;
-
 
 %% Wave yeights, monthly
 
@@ -20,7 +19,7 @@ leg = {'H_{m0,Total}','H_{m0,Sea}','H_{m0,Swell}'};
 
 for i=1:no_locs
 
-    cd(odir_ro);
+    cd([odir_d 'P' num2str(i)]);
 
     % load structure
     fname = [fdir 'ASOW' num2str(i) '_all_structs.mat'];
@@ -30,8 +29,7 @@ for i=1:no_locs
 
         mkdir(params{p});
         cd(params{p});
-        mkdir(['ASOW' num2str(i)]);
-        cd(['ASOW' num2str(i)])
+
         wave_struct = asow_params.(params{p});
         wave_struct.data(wave_struct.data<0)=NaN;
         mwd_struct = asow_params.(direc{p});
@@ -47,7 +45,7 @@ for i=1:no_locs
 
         % do statistics
         m_statistics(wave_struct,'directional',mwd_struct);
-        cd('../../');
+        cd('..');
 
     end
 
@@ -63,7 +61,7 @@ bins = {0:5:30, 0:5:20, 0:5:30};
 
 for i=1:no_locs
 
-    cd(odir_ro);
+    cd([odir_d 'P' num2str(i)]);
 
     % load structure
     fname = [fdir 'ASOW' num2str(i) '_all_structs.mat'];
@@ -73,8 +71,7 @@ for i=1:no_locs
 
         mkdir(params{p});
         cd(params{p});
-        mkdir(['ASOW' num2str(i)]);
-        cd(['ASOW' num2str(i)])
+
         wave_struct = asow_params.(params{p});
         wave_struct.data(wave_struct.data<0)=NaN;
         pwd_struct = asow_params.(direc{p});
@@ -90,7 +87,7 @@ for i=1:no_locs
 
         % do statistics
         m_statistics(wave_struct,'directional',pwd_struct);
-        cd('../../');
+        cd('..');
 
     end
 
@@ -105,7 +102,7 @@ bins = {0:5:25, 0:5:20, 0:5:25};
 
 for i=1:no_locs
 
-    cd(odir_ro);
+    cd([odir_d 'P' num2str(i)]);
 
     % load structure
     fname = [fdir 'ASOW' num2str(i) '_all_structs.mat'];
@@ -115,8 +112,7 @@ for i=1:no_locs
 
         mkdir(params{p});
         cd(params{p});
-        mkdir(['ASOW' num2str(i)]);
-        cd(['ASOW' num2str(i)])
+
         wave_struct = asow_params.(params{p});
         wave_struct.data(wave_struct.data<0)=NaN;
         mwd_struct = asow_params.(direc{p});
@@ -132,13 +128,13 @@ for i=1:no_locs
 
         % do statistics
         m_statistics(wave_struct,'directional',mwd_struct);
-        cd('../../');
+        cd('..');
 
     end
 
 end
 
-%% Wave T01, monthly
+%% Wave T02, monthly
 
 params = {'T02_Total','T02_Sea','T02_Swell'};
 direc = {'MWD_Total','MWD_Sea','MWD_Swell'};
@@ -147,7 +143,7 @@ bins = {0:5:20, 0:5:20, 0:5:20};
 
 for i=1:no_locs
 
-    cd(odir_ro);
+    cd([odir_d 'P' num2str(i)]);
 
     % load structure
     fname = [fdir 'ASOW' num2str(i) '_all_structs.mat'];
@@ -157,8 +153,7 @@ for i=1:no_locs
 
         mkdir(params{p});
         cd(params{p});
-        mkdir(['ASOW' num2str(i)]);
-        cd(['ASOW' num2str(i)])
+
         wave_struct = asow_params.(params{p});
         wave_struct.data(wave_struct.data<0)=NaN;
         mwd_struct = asow_params.(direc{p});
@@ -174,7 +169,7 @@ for i=1:no_locs
 
         % do statistics
         m_statistics(wave_struct,'directional',mwd_struct);
-        cd('../../');
+        cd('..');
 
     end
 

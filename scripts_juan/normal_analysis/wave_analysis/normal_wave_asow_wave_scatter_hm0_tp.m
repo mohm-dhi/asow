@@ -6,7 +6,8 @@ addpath(genpath('C:\DHI\Projects\AtlanticShores\Scripts\asow\scripts_juan\normal
 %%
 
 fdir = 'C:\DHI\Projects\AtlanticShores\Data\TimeSeries\Deliverable\CSVFinal\structs\';
-odir_hmo_tp_sc = 'C:\DHI\Projects\AtlanticShores\Analysis\Normal\Waves\Scatter_Hm0_Tp\';
+odir_scatter = 'C:\DHI\Projects\AtlanticShores\Analysis\Normal\Waves\Results\Scatter\';
+main_dir = 'Hm0_Tp';
 no_locs = 7;
 
 %% Hm0/Tp Omni
@@ -18,9 +19,12 @@ bins_hm0 = {0:2:8, 0:2:8, 0:2:8};
 bins_tp = {0:5:20, 0:5:20, 0:5:20};
 leg = {'H_{m0,Total}','H_{m0,Sea}','H_{m0,Swell}'};
 
-cd([odir_hmo_tp_sc 'Omni']);
-
 for i=1:no_locs
+
+    cd([odir_scatter 'P' num2str(i)]);
+    mkdir(main_dir);
+    mkdir(main_dir,'Omni');
+    cd([main_dir '\Omni']);
 
     % load structure
     fname = [fdir 'ASOW' num2str(i) '_all_structs.mat'];
@@ -30,8 +34,6 @@ for i=1:no_locs
 
         mkdir(params1{p});
         cd(params1{p});
-        mkdir(['ASOW' num2str(i)]);
-        cd(['ASOW' num2str(i)])
         
         hm0_struct = asow_params.(params1{p});
         hm0_struct.data(hm0_struct.data<0)=NaN;
@@ -50,7 +52,7 @@ for i=1:no_locs
         % do statistics
         [fitvals] = m_scatter(hm0_struct,tp_struct,'density','quantiles',[0.05 0.5 0.95],'fit_func_Q','Poly','nolegend');
         save('fitvals.mat','fitvals');
-        cd('../../');
+        cd('..');
 
     end
 
@@ -65,9 +67,12 @@ direc2 = {'PWD_Total','PWD_Sea','PWD_Swell'};
 bins_hm0 = {0:2:8, 0:2:8, 0:2:8};
 bins_tp = {0:5:20, 0:5:20, 0:5:20};
 
-cd([odir_hmo_tp_sc 'Directional']);
-
 for i=1:no_locs
+
+    cd([odir_scatter 'P' num2str(i)]);
+    mkdir(main_dir);
+    mkdir(main_dir,'Directional');
+    cd([main_dir '\Directional']);
 
     % load structure
     fname = [fdir 'ASOW' num2str(i) '_all_structs.mat'];
@@ -77,8 +82,6 @@ for i=1:no_locs
 
         mkdir(params1{p});
         cd(params1{p});
-        mkdir(['ASOW' num2str(i)]);
-        cd(['ASOW' num2str(i)])
         
         hm0_struct = asow_params.(params1{p});
         hm0_struct.data(hm0_struct.data<0)=NaN;
@@ -104,7 +107,7 @@ for i=1:no_locs
         % do statistics
         [fitvals] = m_scatter(hm0_struct,tp_struct,'directional',mwd_struct,'density','quantiles',[0.05 0.5 0.95],'fit_func_Q','Poly','nolegend');
         save('fitvals.mat','fitvals');
-        cd('../../');
+        cd('..');
 
     end
 
