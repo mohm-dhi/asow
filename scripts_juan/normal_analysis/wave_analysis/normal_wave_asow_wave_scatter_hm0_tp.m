@@ -16,7 +16,7 @@ params1 = {'Hm0_Total','Hm0_Sea','Hm0_Swell'};
 params2 = {'Tp_Total','Tp_Sea','Tp_Swell'};
 % direc = {'PWD_Total','PWD_Sea','PWD_Swell'};
 bins_hm0 = {0:2:8, 0:2:8, 0:2:8};
-bins_tp = {0:5:20, 0:5:20, 0:5:20};
+bins_tp = {0:5:35, 0:5:25, 0:5:35};
 leg = {'H_{m0,Total}','H_{m0,Sea}','H_{m0,Swell}'};
 
 for i=1:no_locs
@@ -47,10 +47,10 @@ for i=1:no_locs
         tp_struct.legend = 'SW_{US-EC}';
         hm0_struct.ttt_str_long = ' (1979-01-15–2021-12-31; \Deltat=1h) ';
         hm0_struct.ttt = [datenum('1979-01-15') datenum('2021-12-31') 60];
-        hm0_struct.xyz_str =  ['(' num2str(-1*hm0_struct.xyz(1),'%.3f') 'W; ' num2str(hm0_struct.xyz(2),'%.3f') 'N; ' num2str(hm0_struct.xyz(3),'%.1f') 'm' ')'];
+        hm0_struct.xyz_str =  ['(' num2str(-1*hm0_struct.xyz(1),'%.3f') 'W; ' num2str(hm0_struct.xyz(2),'%.3f') 'N; ' num2str(hm0_struct.xyz(3),'%.1f') 'mMSL' ')'];
 
         % do statistics
-        [fitvals] = m_scatter(hm0_struct,tp_struct,'density','quantiles',[0.05 0.5 0.95],'fit_func_Q','Poly','nolegend');
+        [fitvals] = m_scatter(hm0_struct,tp_struct,'density','quantiles',[0.05 0.5 0.95],'fit_func_Q','Poly');
         save('fitvals.mat','fitvals');
         cd('..');
 
@@ -65,7 +65,7 @@ params2 = {'Tp_Total','Tp_Sea','Tp_Swell'};
 direc1 = {'MWD_Total','MWD_Sea','MWD_Swell'};
 direc2 = {'PWD_Total','PWD_Sea','PWD_Swell'};
 bins_hm0 = {0:2:8, 0:2:8, 0:2:8};
-bins_tp = {0:5:20, 0:5:20, 0:5:20};
+bins_tp = {0:5:35, 0:5:25, 0:5:35};
 
 for i=1:no_locs
 
@@ -102,10 +102,10 @@ for i=1:no_locs
         tp_struct.legend = 'SW_{US-EC}';
         hm0_struct.ttt_str_long = ' (1979-01-15–2021-12-31; \Deltat=1h) ';
         hm0_struct.ttt = [datenum('1979-01-15') datenum('2021-12-31') 60];
-        hm0_struct.xyz_str =  ['(' num2str(-1*hm0_struct.xyz(1),'%.3f') 'W; ' num2str(hm0_struct.xyz(2),'%.3f') 'N; ' num2str(hm0_struct.xyz(3),'%.1f') 'm' ')'];
+        hm0_struct.xyz_str =  ['(' num2str(-1*hm0_struct.xyz(1),'%.3f') 'W; ' num2str(hm0_struct.xyz(2),'%.3f') 'N; ' num2str(hm0_struct.xyz(3),'%.1f') 'mMSL' ')'];
 
         % do statistics
-        [fitvals] = m_scatter(hm0_struct,tp_struct,'directional',mwd_struct,'density','quantiles',[0.05 0.5 0.95],'fit_func_Q','Poly','nolegend');
+        [fitvals] = m_scatter(hm0_struct,tp_struct,'directional',mwd_struct,'density','quantiles',[0.05 0.5 0.95],'fit_func_Q','Poly');
         save('fitvals.mat','fitvals');
         cd('..');
 

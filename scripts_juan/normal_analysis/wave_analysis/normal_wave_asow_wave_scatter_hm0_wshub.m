@@ -15,7 +15,7 @@ no_locs = 7;
 params1 = {'Hm0_Total','Hm0_Sea','Hm0_Swell'};
 params2 = {'WindSpd_Hub'};
 % direc = {'PWD_Total','PWD_Sea','PWD_Swell'};
-bins_hm0 = {0:2:8, 0:2:8, 0:2:8};
+bins_hm0 = {0:2:12, 0:2:12, 0:2:12};
 bins_wshub = {0:5:45};
 
 for i=1:no_locs
@@ -52,7 +52,7 @@ for i=1:no_locs
         wshub_struct.xyz_str =  ['(' num2str(-1*hm0_struct.xyz(1),'%.3f') 'W; ' num2str(hm0_struct.xyz(2),'%.3f') 'N; ' num2str(hm0_struct.xyz(3),'%.1f') 'm' ')'];
 
         % do statistics
-        [fitvals] = m_scatter(wshub_struct,hm0_struct,'density','quantiles',[0.05 0.5 0.95],'fit_func_Q','Poly','nolegend');
+        [fitvals] = m_scatter(wshub_struct,hm0_struct,'density','quantiles',[0.05 0.5 0.95],'fit_func_Q','Poly');
         save('fitvals.mat','fitvals');
         cd('..');
 
@@ -65,7 +65,7 @@ end
 params1 = {'Hm0_Total','Hm0_Sea','Hm0_Swell'};
 params2 = {'WindSpd_Hub'};
 direc1 = {'MWD_Total','MWD_Sea','MWD_Swell'};
-bins_hm0 = {0:2:8, 0:2:8, 0:2:8};
+bins_hm0 = {0:2:12, 0:2:12, 0:2:12};
 bins_wshub = {0:5:45};
 
 for i=1:no_locs
@@ -105,7 +105,7 @@ for i=1:no_locs
         wshub_struct.xyz_str =  ['(' num2str(-1*hm0_struct.xyz(1),'%.3f') 'W; ' num2str(hm0_struct.xyz(2),'%.3f') 'N; ' num2str(hm0_struct.xyz(3),'%.1f') 'm' ')'];
 
         % do statistics
-        [fitvals] = m_scatter(wshub_struct,hm0_struct,'directional',mwd_struct,'density','quantiles',[0.05 0.5 0.95],'fit_func_Q','Poly','nolegend');
+        [fitvals] = m_scatter(wshub_struct,hm0_struct,'directional',mwd_struct,'density','quantiles',[0.05 0.5 0.95],'fit_func_Q','Poly');
         save('fitvals.mat','fitvals');
         cd('..');
 
