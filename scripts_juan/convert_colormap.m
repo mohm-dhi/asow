@@ -13,6 +13,8 @@ colormap_dir = 'C:\Users\jngz\MATLAB\Projects\potlab_v2\src\m_tools\utilities\co
 colormap_name = 'colors_DHI';
 no_locs = 7;
 
+%%
+
 % load colormap
 load([colormap_dir colormap_name]);
 
@@ -32,3 +34,25 @@ for i = 1:no_locs
     save([struct_dir 'ASOW' num2str(i) '_all_structs.mat'],'asow_params','-mat');
 
 end
+
+%% correction for Hm0_Sea = 0
+
+% change attributes on each strcut field
+for i = 1:no_locs
+
+    load([struct_dir 'ASOW' num2str(i) '_all_structs.mat']);
+
+    % find Hm0_Sea is zero
+    ii = find(asow_params.Hm0_Sea.data==0);
+
+    % assign *_Sea to NaN
+    
+
+    save([struct_dir 'ASOW' num2str(i) '_all_structs.mat'],'asow_params','-mat');
+
+end
+
+
+
+
+a = [asow_params.Hm0_Sea.data(ii) asow_params.Tp_Sea.data(ii) asow_params.MWD_Sea.data(ii)];

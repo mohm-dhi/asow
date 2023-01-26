@@ -20,7 +20,8 @@ leg = {'H_{m0,Total}','H_{m0,Sea}','H_{m0,Swell}'};
 di = {[0 0.01 0.1 0.25 0.5 0.75 1:0.5:4],[0 0.01 0.1 0.25:0.25:1 1:0.5:4],[0 0.05 0.1 0.25:0.25:1 1:0.25:2 2:0.5:4]};
 
 for i=1:no_locs
-
+    
+    mkdir(odir_wr,['P' num2str(i)]);
     cd([odir_wr 'P' num2str(i)]);
     mkdir(main_dir);
     mkdir(main_dir,'Omni');
@@ -30,7 +31,7 @@ for i=1:no_locs
     fname = [fdir 'ASOW' num2str(i) '_all_structs.mat'];
     load(fname);
 
-    for p = 3%:length(params)
+    for p = 1:length(params)
 
         mkdir(params{p});
         cd(params{p});
@@ -42,13 +43,15 @@ for i=1:no_locs
 
         % modify struct items for plotting
         wave_struct.bins = bins{p};
+%         wave_struct.ascii = '.xlsx';
+        mwd_struct.bins = 0:30:360;
         %     wave_struct.unit = 'mMLLW';
         wave_struct.legend = 'SW_{US-EC}';
         wave_struct.ttt_str_long = ' (1979-01-15–2021-12-31; \Deltat=1h) ';
         wave_struct.ttt = [datenum('1979-01-15') datenum('2021-12-31') 60];
-        wave_struct.xyz_str =  ['(' num2str(-1*wave_struct.xyz(1),'%.3f') 'W; ' num2str(wave_struct.xyz(2),'%.3f') 'N; ' num2str(wave_struct.xyz(3),'%.1f') 'm' ')'];
+        wave_struct.xyz_str =  [' (' num2str(-1*wave_struct.xyz(1),'%.3f') 'W; ' num2str(wave_struct.xyz(2),'%.3f') 'N; ' num2str(wave_struct.xyz(3),'%.1f') 'mMSL' ') '];
 
-        % do statistics
+        % do rose
         m_scatter(wave_struct,mwd_struct,'di',di{p});
         cd('..');
 
