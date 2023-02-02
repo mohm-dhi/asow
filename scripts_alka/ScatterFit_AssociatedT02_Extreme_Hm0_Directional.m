@@ -45,7 +45,9 @@ for i = 1:7
     
     % calculate fit Hm0 x T02
     quant = [0.05 0.5 0.95];
-    fitOut = m_scatter(Hm0,T02,'directional',MWD,'density','plot_std','fit_func','Poly','fit_func_Q','Poly','quantiles',quant,'notable','closefig',0);
+    fitOut = m_scatter(Hm0,T02,'directional',MWD,'density','plot_std','fit_func','Poly','fit_func_Q','Poly',...
+        'Xmin_frac',0.95,...
+        'quantiles',quant,'notable','closefig',0);
     
     % Save fit
     fitOut.fit_type = 'Poly';
