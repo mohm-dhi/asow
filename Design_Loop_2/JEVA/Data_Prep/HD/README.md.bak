@@ -1,5 +1,0 @@
-Data_Prep_For_JEVA.m
-
-The input file used in this script is the dfs0 file which contains Water Elevation, U Velocity, V Velocity, Current Speed and Current Direction columns for different stations in the following format:
-
-Water Elevation (station 1), Water Elevation (station 2), Water Elevation (station 3), ..., Water Elevation (station N), U Velocity (station 1), U Velocity (station 2), U Velocity (station 3), ..., U Velocity (station N), V Velocity (station 1), V Velocity (station 2), V Velocity (station 3), ..., V Velocity (station N), Current Speed (station 1), Current Speed (station 2), Current Speed (station 3), ..., Current Speed (station N), Current Direction (station 1), Current Direction (station 2), Current Direction (station 3), ..., Current Direction (station N)
