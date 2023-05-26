@@ -1,0 +1,13 @@
+disable,stations,type,lon,lat,depth,model_path,model_column,obs_path,obs_column
+,ASOW-4,current,-74.082,39.203,26.3,\\USDEN1-STOR.DHI.DK\Projects\41806529\02_RAW_MOOD_data\ASOW Calibration Locations SW_HD\Location 4_US_EastCoast_HD_-74.082_39.203_26.3_2667.9_1979-01-01_2021-12-31_.dfs0,2 3,C:\Workplace\41806529 - Atlantic Shores\Mode_Obs_Comparison\Data\Processed_Data\Loc4\QC_datalistings_aqd_SV3_WS201_depth_averaged.csv,3 4
+,ASOW-4,wave,-74.082,39.203,26.3,\\USDEN1-STOR.DHI.DK\Projects\41806529\02_RAW_MOOD_data\ASOW Calibration Locations SW_HD\Location 4_US_EastCoast_SW_-74.082_39.203_26.3_2667.9_1979-01-01_2021-12-31_.dfs0,1 2 6,C:\Workplace\41806529 - Atlantic Shores\Mode_Obs_Comparison\Data\Processed_Data\Loc4\QC_datalistings_wave_SV3_WS201.csv,1 6 3
+,ASOW-4,wind,-74.082,39.203,26.3,\\USDEN1-STOR.DHI.DK\Projects\41806529\02_RAW_MOOD_data\CFSR MOOD\Location4_Global_Wind_CFSR_285.918_39.203_10_22716.1_1979-01-01_2022-10-01_.dfs0,1 2,C:\Workplace\41806529 - Atlantic Shores\Mode_Obs_Comparison\Data\Processed_Data\Loc4\QC_datalistings_wind_SV3_WS201.csv,5 4 10 9 15 14 20 19
+Yes,ASOW-4,spectra,-74.082,39.203,26.3,"""""",1,"""""",1
+,ASOW-4,wl,-74.082,39.203,26.3,\\USDEN1-STOR.DHI.DK\Projects\41806529\02_RAW_MOOD_data\ASOW Calibration Locations SW_HD\Location 4_US_EastCoast_HD_-74.082_39.203_26.3_2667.9_1979-01-01_2021-12-31_.dfs0,1,C:\Workplace\41806529 - Atlantic Shores\Mode_Obs_Comparison\Data\Processed_Data\Loc4\QC_datalistings_met_SV4_WS200.csv,9
+Yes,AtlanticCity_wl,wl,-74.418,39.357,4.7,\\USDEN1-STOR.DHI.DK\Projects\41806529\02_RAW_MOOD_data\ASOW Calibration Locations SW_HD\Atlantic City Water Level_US_EastCoast_HD_-74.418_39.357_4.7_2539.3_1979-01-01_2021-12-31_.dfs0,1,C:\Users\mohm\OneDrive - DHI\Documents\Project Files\41806529 - Atlantic Shores\water_levels\8534720\combined_8534720.dfs0,1
+Yes,91133,a,-79.6,43.26,0,C:\path\to\the\model_dfs0\or\csv\file.dfs0,13 129 361,C:\path\to\the\observation_dfs0\or\csv\file.dfs0,1 2 3
+Yes,91134,a,-79.64,43.26,0,C:\path\to\the\model_dfs0\or\csv\file.dfs0,14 130 362,C:\path\to\the\observation_dfs0\or\csv\file.dfs0,1 2 3
+Yes,91135,a,-79.68,43.26,0,C:\path\to\the\model_dfs0\or\csv\file.dfs0,15 131 363,C:\path\to\the\observation_dfs0\or\csv\file.dfs0,1 2 3
+Yes,91136,a,-79.72,43.28,0,C:\path\to\the\model_dfs0\or\csv\file.dfs0,16 132 364,C:\path\to\the\observation_dfs0\or\csv\file.dfs0,1 2 3
+Yes,91137,a,-79.76,43.28,0,C:\path\to\the\model_dfs0\or\csv\file.dfs0,2 6 10,C:\path\to\the\observation_dfs0\or\csv\file.dfs0,1 2 3
+Yes,91138,a,-79.76,43.3,0,C:\path\to\the\model_dfs0\or\csv\file.dfs0,3 7 11,C:\path\to\the\observation_dfs0\or\csv\file.dfs0,1 2 3
